@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>待办事项清单</title>
+    <title>日历待办事项</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#7047EB">
@@ -11,13 +11,30 @@
 </head>
 <body>
     <div class="container">
-        <div class="add-task">
-            <input type="text" id="taskInput" placeholder="添加新任务...">
-            <button id="addButton">添加</button>
+        <!-- 日历视图 -->
+        <div id="calendarView" class="calendar-view">
+            <div class="calendar-header">
+                <button id="prevMonth">&lt;</button>
+                <h2 id="currentMonth">2024年3月</h2>
+                <button id="nextMonth">&gt;</button>
+            </div>
+            <div class="weekdays">
+                <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+            </div>
+            <div id="calendarDays" class="calendar-days"></div>
         </div>
-        
-        <div class="task-list" id="taskList">
-            <!-- 任务列表将通过 JavaScript 动态生成 -->
+
+        <!-- 任务列表视图（初始隐藏） -->
+        <div id="taskView" class="task-view" style="display: none;">
+            <div class="task-header">
+                <button id="backToCalendar" class="back-button">&lt; 返回</button>
+                <h2 id="selectedDate">2024年3月1日</h2>
+            </div>
+            <div class="add-task">
+                <input type="text" id="taskInput" placeholder="添加新任务...">
+                <button id="addButton">添加</button>
+            </div>
+            <div class="task-list" id="taskList"></div>
         </div>
     </div>
     <script src="app.js"></script>
