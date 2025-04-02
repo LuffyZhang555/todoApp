@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项清单</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#7047EB">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+    <div class="container">
+        <div class="add-task">
+            <input type="text" id="taskInput" placeholder="添加新任务...">
+            <button id="addButton">添加</button>
+        </div>
+        
+        <div class="task-list" id="taskList">
+            <!-- 任务列表将通过 JavaScript 动态生成 -->
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker 注册成功');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker 注册失败: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html> 
